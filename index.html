@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Little Lore — Digital Diary & Journal</title>
     <meta name="description" content="A premium, minimal open-book digital diary with stylus handwriting, monthly calendar spread, daily planner, scrapbook, and quiet sanctuaries." />
+    <meta name="theme-color" content="#E8BFD0" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Little Lore" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png" />
+    <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <meta property="og:title" content="Little Lore — Digital Diary & Journal" />
     <meta property="og:description" content="A premium, minimal open-book digital diary with stylus handwriting, monthly calendar spread, daily planner, scrapbook, and quiet sanctuaries." />
     <meta property="og:type" content="website" />
@@ -27,6 +34,15 @@ Error generating stack: `+e.message+`
   </head>
   <body>
     <div id="root"></div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/service-worker.js").catch((error) => {
+            console.warn("Little Lore service worker registration failed:", error);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
 
